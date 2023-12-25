@@ -3,6 +3,8 @@ import type { Metadata } from 'next';
 import './globals.css'
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+// import { store } from '@/redux/store';
+import { Provider } from 'react-redux';
 
 export const metadata: Metadata = {
   title: 'Travel',
@@ -16,6 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      {/* <Provider store={store}> */}
       <body>
         <Navbar />
         <main className="relative overflow-hidden">
@@ -23,6 +26,7 @@ export default function RootLayout({
         </main>
         <Footer />
       </body>
+      {/* </Provider> */}
     </html>
   )
 }

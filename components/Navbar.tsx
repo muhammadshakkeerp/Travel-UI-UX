@@ -1,9 +1,24 @@
+"use client"
 import { NAV_LINKS } from "@/constants"
 import Image from "next/image"
 import Link from "next/link"
 import Button from "./Button"
+import { MdDarkMode } from 'react-icons/md'
+import { IoMdSunny } from 'react-icons/io'
+import {  FC,  useState } from "react"
+import { motion } from "framer-motion"
+import {  useSelector } from "react-redux"
+// import { RootState } from "@/redux/store"
 
-const Navbar = () => {
+interface NavProps {
+ 
+}
+
+const Navbar: FC<NavProps> = ({
+}) => {
+  const [toggleDark, setToggleDark] = useState(false)
+  // const state = useSelector((state:RootState)=>state.dark)
+  // console.log(state)
   return (
     <nav className="flexBetween max-container padding-container relative z-30 py-5">
       <Link href="/">
@@ -18,8 +33,12 @@ const Navbar = () => {
         ))}
       </ul>
 
+      <motion.button className="" onClick={() => setToggleDark(!toggleDark)} whileTap={{ rotate: 360 }} > {toggleDark ? <MdDarkMode /> : <IoMdSunny />}
+      </motion.button>
+
+
       <div className="lg:flexCenter hidden">
-        <Button 
+        <Button
           type="button"
           title="Login"
           icon="/user.svg"
@@ -27,7 +46,7 @@ const Navbar = () => {
         />
       </div>
 
-      <Image 
+      <Image
         src="menu.svg"
         alt="menu"
         width={32}

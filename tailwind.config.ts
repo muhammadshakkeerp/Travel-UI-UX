@@ -5,9 +5,11 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  darkMode:"class",
   theme: {
     extend: {
       colors: {
+        dark:"#1a202c",
         green: {
           50: '#30AF5B',
           90: '#292C27',
