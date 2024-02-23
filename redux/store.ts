@@ -1,22 +1,16 @@
-// // store.ts
-// import { configureStore } from '@reduxjs/toolkit';
-// import rootReducer from './reducers/DarkReducer'; // Import your reducers
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import DarkReducer from "./reducers/DarkReducer";
 
-// export interface RootState {
-//   // Define your RootState interface here
-//   dark: ReturnType<typeof rootReducer>;
-// }
+export type DarkState = ReturnType<typeof DarkReducer>;
 
-// let store: any = null;
+export type RootState = {
+  dark: DarkState;
+};
 
-// if (typeof window !== 'undefined') {
-//   // This check ensures that the store is only created in the client-side context
-//   store = configureStore({
-//     reducer: rootReducer,
-//   });
-// } else {
-//   // In server-side or during pre-rendering, set store to an empty or default value
-//   store = {}; // Or any default value you want to assign for server-side rendering
-// }
+const RootReducer = combineReducers({
+  dark: DarkReducer,
+});
 
-// export { store };
+export const store = configureStore({
+  reducer: RootReducer,
+});

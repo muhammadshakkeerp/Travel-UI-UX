@@ -1,10 +1,12 @@
+// "use client"
 import type { Metadata } from 'next';
 
 import './globals.css'
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 // import { store } from '@/redux/store';
-import { Provider } from 'react-redux';
+import { Provider, useSelector } from 'react-redux';
+import { RootState } from '@/redux/store';
 
 export const metadata: Metadata = {
   title: 'Travel',
@@ -13,11 +15,17 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  DarkMode
 }: {
-  children: React.ReactNode
+  children: React.ReactNode,
+  DarkMode:RootState
 }) {
+
+  // const DarkMode = useSelector((state:RootState)=>state)
+  console.log(DarkMode)
+
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       {/* <Provider store={store}> */}
       <body>
         <Navbar />
