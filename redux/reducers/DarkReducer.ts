@@ -1,22 +1,24 @@
-// import { createSlice } from '@reduxjs/toolkit';
+const TOGGLE__DARKMODE = "TOGGLE__DARKMODE"
 
-// const initialState = {
-//   counter: 0,
-// };
+const toggleDarkMode=()=>({
+    type:TOGGLE__DARKMODE
+})
 
-// export const counterSlice = createSlice({
-//   name: 'counter',
-//   initialState,
-//   reducers: {
-//     increment: (state) => {
-//       state.counter += 1;
-//     },
-//     decrement: (state) => {
-//       state.counter -= 1;
-//     },
-//   },
-// });
+const initialState:{isEnabled:boolean}  = {
+    isEnabled:false
+}
 
-// export const { increment, decrement } = counterSlice.actions;
+const DarkReducer=(state=initialState , action:{type:string})=>{
+    switch (action.type) {
+        case TOGGLE__DARKMODE:
+            return {
+                ...state, isEnabled: !state.isEnabled 
+            }
+    
+        default:
+           return  state
+    }
+    
+}
 
-// export default counterSlice.reducer;
+export default DarkReducer
